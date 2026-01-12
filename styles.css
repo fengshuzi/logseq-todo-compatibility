@@ -1,0 +1,180 @@
+/* Logseq TODO Compatibility Plugin Styles */
+
+/* CSS 变量 - 可以通过设置自定义 */
+:root {
+  --logseq-todo-color: #808080;
+  --logseq-doing-color: #ff9800;
+  --logseq-later-color: #2196f3;
+  --logseq-now-color: #f44336;
+  --logseq-done-color: #4caf50;
+  --logseq-canceled-color: #9e9e9e;
+}
+
+/* 基础容器样式 */
+.logseq-todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.2em 0;
+}
+
+/* 复选框样式 */
+.logseq-checkbox {
+  flex-shrink: 0;
+  cursor: pointer;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0;
+}
+
+/* 内容样式 */
+.logseq-todo-content {
+  flex: 1;
+  line-height: 1.5;
+}
+
+/* 状态标签 */
+.logseq-status-label {
+  display: inline-block;
+  padding: 0.1em 0.4em;
+  margin-right: 0.5em;
+  font-size: 0.75em;
+  font-weight: 600;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 不同状态的颜色 */
+.logseq-status-todo .logseq-checkbox {
+  accent-color: var(--logseq-todo-color);
+}
+
+.logseq-status-doing .logseq-checkbox {
+  accent-color: var(--logseq-doing-color);
+}
+
+.logseq-status-doing .logseq-status-label {
+  background-color: var(--logseq-doing-color);
+  color: white;
+}
+
+.logseq-status-later .logseq-checkbox {
+  accent-color: var(--logseq-later-color);
+}
+
+.logseq-status-later .logseq-status-label {
+  background-color: var(--logseq-later-color);
+  color: white;
+}
+
+.logseq-status-now .logseq-checkbox {
+  accent-color: var(--logseq-now-color);
+}
+
+.logseq-status-now .logseq-status-label {
+  background-color: var(--logseq-now-color);
+  color: white;
+}
+
+.logseq-status-done .logseq-checkbox {
+  accent-color: var(--logseq-done-color);
+}
+
+.logseq-status-canceled .logseq-checkbox {
+  accent-color: var(--logseq-canceled-color);
+}
+
+/* 已完成任务的样式 */
+.logseq-status-done .logseq-todo-content,
+.logseq-status-canceled .logseq-todo-content {
+  /* 不添加删除线，保持原样 */
+  text-decoration: none !important;
+  opacity: 0.8;
+}
+
+/* 列表项样式 */
+.logseq-todo-list-item {
+  list-style: none;
+  margin-left: -1.5em;
+}
+
+/* 标题中的 TODO */
+.logseq-todo-heading {
+  display: flex;
+  align-items: center;
+}
+
+.logseq-todo-heading .logseq-todo-item {
+  width: 100%;
+}
+
+/* 段落中的 TODO */
+.logseq-todo-paragraph {
+  margin: 0.5em 0;
+}
+
+/* 暗色主题适配 */
+.theme-dark .logseq-status-label {
+  opacity: 0.9;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .logseq-checkbox {
+    width: 1.4em;
+    height: 1.4em;
+  }
+  
+  .logseq-status-label {
+    font-size: 0.7em;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .logseq-checkbox {
+    -webkit-appearance: checkbox;
+    appearance: checkbox;
+  }
+  
+  .logseq-status-label {
+    border: 1px solid currentColor;
+    background-color: transparent !important;
+    color: currentColor !important;
+  }
+}
+
+/* 悬停效果 */
+.logseq-todo-item:hover {
+  background-color: var(--background-modifier-hover);
+  border-radius: 4px;
+  margin: 0 -4px;
+  padding: 0.2em 4px;
+}
+
+/* 焦点样式 */
+.logseq-checkbox:focus {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: 2px;
+}
+
+/* 动画效果 */
+.logseq-checkbox {
+  transition: all 0.2s ease;
+}
+
+.logseq-todo-content {
+  transition: opacity 0.2s ease, text-decoration 0.2s ease;
+}
+
+/* 嵌套列表支持 */
+ul .logseq-todo-list-item,
+ol .logseq-todo-list-item {
+  margin-left: 0;
+}
+
+/* 与 Obsidian 原生任务列表的兼容性 */
+.task-list-item .logseq-todo-item {
+  margin-left: 0;
+}

@@ -1,0 +1,11 @@
+{
+  "id": "logseq-todo-compatibility",
+  "name": "Logseq TODO Compatibility",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Render Logseq-style TODO/DONE markers as checkboxes in Obsidian. Supports TODO, DOING, LATER, NOW, DONE, and CANCELED statuses.",
+  "author": "Your Name",
+  "authorUrl": "https://github.com/yourusername/logseq-todo-compatibility",
+  "fundingUrl": "https://github.com/sponsors/yourusername",
+  "isDesktopOnly": false
+}
