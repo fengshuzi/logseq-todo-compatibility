@@ -41,8 +41,12 @@ const VAULTS = [
   }
 ];
 
-// 需要复制的文件
-const FILES_TO_COPY = ['main.js', 'manifest.json', 'styles.css'];
+// 需要复制的文件（都从 dist 目录）
+const FILES_TO_COPY = [
+  { src: 'dist/main.js', dest: 'main.js' },
+  { src: 'dist/manifest.json', dest: 'manifest.json' },
+  { src: 'dist/styles.css', dest: 'styles.css' }
+];
 
 console.log('📦 开始部署插件到所有 vaults...\n');
 
@@ -57,16 +61,16 @@ VAULTS.forEach(vault => {
   }
   
   // 复制文件
-  FILES_TO_COPY.forEach(file => {
+  FILES_TO_COPY.forEach(({ src, dest }) => {
     try {
-      if (existsSync(file)) {
-        copyFileSync(file, join(vault.path, file));
-        console.log(`  ✓ 已复制 ${file}`);
+      if (existsSync(src)) {
+        copyFileSync(src, join(vault.path, dest));
+        console.log(`  ✓ 已复制 ${src} → ${dest}`);
       } else {
-        console.log(`  ⚠️  警告: ${file} 不存在`);
+        console.log(`  ⚠️  警告: ${src} 不存在`);
       }
     } catch (error) {
-      console.error(`  ❌ 复制 ${file} 失败:`, error.message);
+      console.error(`  ❌ 复制 ${src} 失败:`, error.message);
     }
   });
   
