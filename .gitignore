@@ -135,3 +135,4 @@ main.js
 
 # macOS
 .DS_Store
+dist
